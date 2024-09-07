@@ -11,9 +11,14 @@ import com.mycompany.pr.farmacia.Entities.User;
  * @author Nicolas
  */
 public class PersistenceController {
+
     UserJpaController userJpaController = new UserJpaController();
-    
-    public void createUser(User user){
+
+    public void createUser(User user) {
         userJpaController.create(user);
+    }
+
+    public User getUserEmail(String email) {
+        return userJpaController.getByEmail(email);
     }
 }

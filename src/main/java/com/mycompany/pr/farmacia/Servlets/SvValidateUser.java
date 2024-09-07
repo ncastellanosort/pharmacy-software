@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Nicolas
  */
-@WebServlet(name = "SvCreateUser", urlPatterns = {"/SvCreateUser"})
-public class SvCreateUser extends HttpServlet {
+@WebServlet(name = "SvValidateUser", urlPatterns = {"/SvValidateUser"})
+public class SvValidateUser extends HttpServlet {
 
     UserController userController = new UserController();
 
@@ -42,26 +42,16 @@ public class SvCreateUser extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("confirmPassword");
-        String name = request.getParameter("name");
-        String phoneNumber = request.getParameter("phoneNumber");
+
+        User user = userController.getUserEmailController(email);
 
         HttpSession httpSession = request.getSession();
 
-        
-        
-        if (password.equals(confirmPassword)) {
+        httpSession.setAttribute("userSession", user);
 
-            User newUser = new User(email, password, confirmPassword, phoneNumber, name);
-            
-            httpSession.setAttribute("newUser", newUser);
-
-            userController.createUserController(newUser);
-            response.sendRedirect("LoginSuccesful.jsp");
-        } else {
-            response.sendRedirect("Register.jsp");
+        if (user.getPassword().equals(password)) {
+            response.sendRedirect("Index.jsp");
         }
-
         processRequest(request, response);
     }
 

@@ -12,9 +12,14 @@ import com.mycompany.pr.farmacia.Persistence.PersistenceController;
  * @author Nicolas
  */
 public class UserController {
+
     PersistenceController persistenceController = new PersistenceController();
-    
-    public void createUserController(User user){
+
+    public void createUserController(User user) {
         persistenceController.createUser(user);
+    }
+
+    public User getUserEmailController(String email) {
+        return persistenceController.getUserEmail(email);
     }
 }
