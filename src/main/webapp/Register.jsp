@@ -13,7 +13,7 @@
             <form action="SvCreateUser" method="POST" class="w-2/3 grid grid-cols-2 gap-6">
                 <div class="mb-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                    <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Usuario" required />
+                    <input type="email" title="Por favor ingrese un correo valido" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Usuario" required />
                 </div>
                 <div class="mb-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Número de contacto</label>
-                    <input type="text" name="phoneNumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="3112242552" required />
+                    <input type="text" name="phoneNumber" type="tel" inputmode="numeric" pattern="[0-9]+" title="Por favor ingrese solo números" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="3112242552" required />
                 </div>
                 <div class="mb-3 invisible"></div>
                 <div>
