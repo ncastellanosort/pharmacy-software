@@ -7,7 +7,7 @@ package com.mycompany.pr.farmacia.Servlets;
 import com.mycompany.pr.farmacia.Controllers.UserController;
 import com.mycompany.pr.farmacia.Entities.User;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,12 +48,10 @@ public class SvCreateUser extends HttpServlet {
 
         HttpSession httpSession = request.getSession();
 
-        
-        
         if (password.equals(confirmPassword)) {
 
             User newUser = new User(email, password, confirmPassword, phoneNumber, name);
-            
+
             httpSession.setAttribute("newUser", newUser);
 
             userController.createUserController(newUser);

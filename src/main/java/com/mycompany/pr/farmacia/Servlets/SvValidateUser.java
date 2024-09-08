@@ -49,9 +49,12 @@ public class SvValidateUser extends HttpServlet {
 
         httpSession.setAttribute("userSession", user);
 
-        if (user.getPassword().equals(password)) {
+        if (user == null) {
+            response.sendRedirect("LoginNotFound.jsp");
+        } else if (user.getPassword().equals(password)) {
             response.sendRedirect("Index.jsp");
         }
+
         processRequest(request, response);
     }
 
