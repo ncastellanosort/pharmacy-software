@@ -15,7 +15,7 @@
             <form class="w-1/3" action="SvValidateUser" method="POST">
                 <div class="mb-5">
                     <label class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                    <input type="email" title="Por favor ingrese un correo valido" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Usuario" required />
+                    <input type="email" title="Por favor ingrese un correo valido" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="example@company.com" required />
                 </div>
                 <div class="mb-5">
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
@@ -28,8 +28,11 @@
             </form>
         </section>
 
-        <footer class="bg-blue-700 text-white text-center py-4 mt-auto">
-            <p>Todos los derechos reservados &copy; 2024</p>
+        <footer class="bg-blue-700 w-full">
+            <div class="w-full">
+                <h2 class="text-white text-center text-sm p-4">Todos los derechos reservados &copy; 2024</h2>
+            </div>
         </footer>
+
     </body>
 </html>

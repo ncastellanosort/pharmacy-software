@@ -38,8 +38,12 @@
             </form>
         </section>
 
-        <footer class="bg-blue-700 text-white text-center py-4 mt-auto">
-            <p>Todos los derechos reservados &copy; 2024</p>
+        <footer class="bg-blue-700 w-full">
+
+            <div class="w-full">
+                <h2 class="text-white text-center text-sm p-4">Todos los derechos reservados &copy; 2024</h2>
+            </div>
+
         </footer>
 
     </body>
