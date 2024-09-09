@@ -11,6 +11,8 @@ Welcome to the Pharmacy Project! This is a web application developed using Java,
 - **Servlets**: Handle requests and responses in the web application.
 - **MySQL**: Database for storing pharmacy data.
 - **Maven**: Build tool for managing project dependencies and configuration.
+- **Flowbite**: Ui support tool [Flowbite](https://flowbite.com/)
+
 
 ## Getting Started 🏎️
 
