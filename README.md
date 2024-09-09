@@ -1,4 +1,4 @@
-# Pharmacy Project with JSP and Servlets in Java
+# Pharmacy Project with JSP and Servlets in Java 🧑‍⚕️
 
 Welcome to the Pharmacy Project! This is a web application developed using Java, JSP (JavaServer Pages), and Servlets. The project aims to streamline pharmacy operations by providing an intuitive and user-friendly interface for managing pharmacy data.
 
@@ -19,3 +19,21 @@ To get started with the Pharmacy Project, follow these steps:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/pharmacy-project.git
+
+## Contributing
+
+We welcome contributions to improve the project! If you'd like to contribute, please follow these steps:
+
+1. **Fork the Repository**: Create your own fork of the repository.
+2. **Create a New Branch**: For your changes, create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
+3. **Make Your Changes**: Implement your changes and test thoroughly.
+4. **Submit a Pull Request**: Open a pull request to merge your changes into the main repository.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Thank you for checking out the Pharmacy Project!
+
