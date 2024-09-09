@@ -4,7 +4,7 @@ Welcome to the Pharmacy Project! This is a web application developed using Java,
 
 ![Main Page](https://github.com/user-attachments/assets/5919c33b-c370-4618-9729-30d7065080bb)
 
-## Technologies Used
+## Technologies Used 🚀
 
 - **Java**: Core programming language for backend development.
 - **JSP (JavaServer Pages)**: Dynamic web pages for the frontend.
@@ -12,7 +12,7 @@ Welcome to the Pharmacy Project! This is a web application developed using Java,
 - **MySQL**: Database for storing pharmacy data.
 - **Maven**: Build tool for managing project dependencies and configuration.
 
-## Getting Started
+## Getting Started 🏎️
 
 To get started with the Pharmacy Project, follow these steps:
 
@@ -28,7 +28,7 @@ To get started with the Pharmacy Project, follow these steps:
 4. **Deploy the Application: Deploy the WAR file to your favorite servlet container (e.g., Apache Tomcat).**
 
    
-## Contributing
+## Contributing 🤚
 
 We welcome contributions to improve the project! If you'd like to contribute, please follow these steps:
 
@@ -39,9 +39,9 @@ We welcome contributions to improve the project! If you'd like to contribute, pl
 3. **Make Your Changes**: Implement your changes and test thoroughly.
 4. **Submit a Pull Request**: Open a pull request to merge your changes into the main repository.
 
-## License
+## License 🪪
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Thank you for checking out the Pharmacy Project!
+## Thank you for checking out the Pharmacy Project! 
 
