@@ -19,7 +19,15 @@ To get started with the Pharmacy Project, follow these steps:
 1. **Clone the Repository**:
    ```bash
    git clone https://github.com/yourusername/pharmacy-project.git
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd pharmacy-project
+3. **Build the Project: Ensure you have Maven installed, then run**:
+   ```bash
+   mvn clean install
+4. **Deploy the Application: Deploy the WAR file to your favorite servlet container (e.g., Apache Tomcat).**
 
+   
 ## Contributing
 
 We welcome contributions to improve the project! If you'd like to contribute, please follow these steps:
