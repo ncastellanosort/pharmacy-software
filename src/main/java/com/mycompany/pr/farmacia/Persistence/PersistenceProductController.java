@@ -32,4 +32,12 @@ public class PersistenceProductController {
         return productJpaController.getProductCount();
     }
 
+    public void editProduct(Product product) throws Exception {
+        productJpaController.edit(product);
+    }
+
+    public Product getProduct(int id) {
+        return productJpaController.findProduct(id);
+    }
+
 }

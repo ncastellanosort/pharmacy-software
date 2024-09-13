@@ -4,6 +4,7 @@
     Author     : Nicolas
 --%>
 
+<%@page import="com.mycompany.pr.farmacia.Entities.Product"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -142,29 +143,33 @@
                         <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Editar un producto</h1>
                     </div>
                     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+                        <%
+                            Product productEdit = (Product) request.getSession().getAttribute("productToEdit");
+                        %>
 
-                        <form action="SvCreateProduct" method="POST">
+
+                        <form action="SvEditProduct" method="POST">
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Código</label>
-                                    <input type="text" name="newCode" id="newCode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Código del producto" required="">
+                                    <input type="text" name="newCode" id="newCode" value="<%= productEdit.getCode()%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Código del producto" required="">
                                 </div>
                                 <div class="sm:col-span-2">
                                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-                                    <input type="text" name="newName" id="newName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escribe el nombre del producto" required="">
+                                    <input type="text" name="newName" id="newName" value="<%= productEdit.getName()%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escribe el nombre del producto" required="">
                                 </div>
                                 <div class="w-full">
                                     <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca</label>
-                                    <input type="text" name="newBrand" id="newBrand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Marca del producto" required="">
+                                    <input type="text" name="newBrand" id="newBrand" value="<%= productEdit.getBrand()%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Marca del producto" required="">
                                 </div>
                                 <div class="w-full">
                                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
-                                    <input type="text" name="newPrice" id="newPrice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="0.99" required="">
+                                    <input type="text" name="newPrice" id="newPrice" value="<%= productEdit.getPrice()%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="0.99" required="">
                                 </div>
                                 <div>
                                     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoría</label>
                                     <select id="newCategory" name="newCategory" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                        <option selected="">Seleccionar categoría</option>
+                                        <option selected=""><%= productEdit.getCategory()%></option>
                                         <option value="Pastas">Pastas</option>
                                         <option value="Aseo">Aseo</option>
                                         <option value="Jarabes">Jarabes</option>
@@ -173,11 +178,11 @@
                                 </div>
                                 <div>
                                     <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
-                                    <input type="number" name="newStock" id="newStock" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="199" required="">
+                                    <input type="number" name="newStock" value="<%= productEdit.getStock()%>" id="newStock" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="199" required="">
                                 </div> 
                                 <div class="sm:col-span-2">
                                     <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
-                                    <textarea id="newDescription" name="newDescription" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="La descripcion acá"></textarea>
+                                    <textarea id="newDescription" name="newDescription" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="La descripcion acá"><%= productEdit.getDescription()%></textarea>
                                 </div>
                             </div>
                             <button type="submit" class="inline-flex text-white bg-blue-700 hover:bg-blue-800 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">

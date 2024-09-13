@@ -150,7 +150,7 @@
                         %>
 
                         <h1 class="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-2">Productos en stock</h1>
-                        <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-6">Tienes un total de <strong><%= productController.getAmountOfProducts()%></strong> productos disponibles.</p>
+                        <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-6">Tienes un total de <strong><%= productController.getAmountOfProductsController()%></strong> productos disponibles.</p>
                         <a href="Products.jsp" class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                             <p class="mr-2">Ver productos</p>
 

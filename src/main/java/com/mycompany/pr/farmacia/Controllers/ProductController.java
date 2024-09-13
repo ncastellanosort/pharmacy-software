@@ -29,8 +29,16 @@ public class ProductController {
         persistenceProductController.deleteProduct(id);
     }
 
-    public int getAmountOfProducts() {
+    public int getAmountOfProductsController() {
         return persistenceProductController.getAmountOfProducts();
+    }
+
+    public void editProductController(Product product) throws Exception {
+        persistenceProductController.editProduct(product);
+    }
+
+    public Product getProductController(int id) {
+        return persistenceProductController.getProduct(id);
     }
 
 }

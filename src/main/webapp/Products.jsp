@@ -147,22 +147,15 @@
 
                     <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Productos</h1>
 
-                    <div class="flex justify-end">
-                        <!--                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 4.5a6.5 6.5 0 1 1-4.55 11.05l-4.95 4.95a1 1 0 0 1-1.4-1.4l4.95-4.95A6.5 6.5 0 0 1 11 4.5z" />
-                                                    </svg>
-                                                    <span class="sr-only">Buscar</span>
-                                                </button>            -->
-                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <a href="CreateProduct.jsp">
-                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                </svg>
-                                <span class="sr-only">Agregar</span>
-                            </a>  
-                        </button>
-                    </div>
+                    <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <a href="CreateProduct.jsp">
+                            <svg class="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.757v8.486M7.757 12h8.486M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
+
+                            <span class="sr-only">Agregar</span>
+                        </a>  
+                    </button>
 
                 </div>
 
@@ -211,7 +204,7 @@
                             <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1">ID: # <%= product.getId()%></p>
                             <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">Código: <%= product.getCode()%></p>
 
-                            <a href="#" class="bg-white text-gray-500 border border-gray-200 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-blue-400 mb-2 w-16 text-center">
+                            <a href="#" class="bg-blue-100 text-blue-800 border border-gray-200 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-blue-400 mb-2 w-16 text-center">
                                 <p><%= product.getCategory()%></p>
                             </a>
 
@@ -235,9 +228,10 @@
                             </div>
 
                             <div class="flex justify-between">
-                                <a href="EditProduct.jsp" class="text-white rounded-lg bg-blue-600 hover:bg-blue-700 dark:focus:ring-blue-900 py-2 px-4 font-medium">
+                                <a href="SvGetProductEdit?id=<%= product.getId()%>" class="text-white rounded-lg bg-green-600 hover:bg-green-700 dark:focus:ring-green-900 py-2 px-4 font-medium">
                                     Editar
                                 </a>
+
                                 <a href="SvDeleteProduct?id=<%=product.getId()%>" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-medium">
                                     Eliminar
                                 </a>
