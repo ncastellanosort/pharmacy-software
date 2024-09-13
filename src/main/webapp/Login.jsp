@@ -1,3 +1,4 @@
+<%@page import="com.mycompany.pr.farmacia.Controllers.ProductController"%>
 <%@page import="com.mycompany.pr.farmacia.Controllers.UserController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,7 +10,10 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body class="flex flex-col min-h-screen">
-        <% UserController userController = new UserController();%>
+        <%
+            UserController userController = new UserController();
+            ProductController productController = new ProductController();
+        %>
 
         <section class="bg-gray-50 dark:bg-gray-900 flex-grow">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto my-14 md:h-full lg:py-0">

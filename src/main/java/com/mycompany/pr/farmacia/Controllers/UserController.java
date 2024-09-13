@@ -5,7 +5,7 @@
 package com.mycompany.pr.farmacia.Controllers;
 
 import com.mycompany.pr.farmacia.Entities.User;
-import com.mycompany.pr.farmacia.Persistence.PersistenceController;
+import com.mycompany.pr.farmacia.Persistence.PersistenceUserController;
 
 /**
  *
@@ -13,7 +13,7 @@ import com.mycompany.pr.farmacia.Persistence.PersistenceController;
  */
 public class UserController {
 
-    PersistenceController persistenceController = new PersistenceController();
+    PersistenceUserController persistenceController = new PersistenceUserController();
 
     public void createUserController(User user) {
         persistenceController.createUser(user);

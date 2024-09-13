@@ -10,7 +10,7 @@ import com.mycompany.pr.farmacia.Entities.User;
  *
  * @author Nicolas
  */
-public class PersistenceController {
+public class PersistenceUserController {
 
     UserJpaController userJpaController = new UserJpaController();
 

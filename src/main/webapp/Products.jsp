@@ -132,6 +132,9 @@
                 <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Productos</h1>
                 <div class="p-4 mx-auto max-w-screen-xl flex flex-wrap justify-center">
 
+                    
+                    
+                    
                     <div class="max-w-sm bg-white m-4 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
                             <img class="w-full h-64 object-cover rounded-t-lg" src="https://th.bing.com/th/id/OIP.VfXeiUdWpQL_DKaoJ1EIbwHaHd?rs=1&pid=ImgDetMain" alt="" />
