@@ -4,6 +4,10 @@
     Author     : Nicolas
 --%>
 
+<%@page import="com.mycompany.pr.farmacia.Controllers.ProductController"%>
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.pr.farmacia.Entities.Product"%>
+<%@page import="com.mycompany.pr.farmacia.Entities.Product"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,9 +18,9 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body>
-        <% User userSession = (User) request.getSession().getAttribute("userSession");%>
-
-
+        <%
+            User userSession = (User) request.getSession().getAttribute("userSession");
+        %>
         <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
                 <div class="flex items-center justify-between">
@@ -129,101 +133,76 @@
 
         <section class="p-4 mt-14 sm:ml-64">
             <div class="bg-whitedark:bg-gray-900">
-                <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Productos</h1>
+
+                <div class="flex flex-row justify-between items-center">
+
+                    <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Productos</h1>
+
+                    <div class="flex justify-end">
+                        <!--                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 4.5a6.5 6.5 0 1 1-4.55 11.05l-4.95 4.95a1 1 0 0 1-1.4-1.4l4.95-4.95A6.5 6.5 0 0 1 11 4.5z" />
+                                                    </svg>
+                                                    <span class="sr-only">Buscar</span>
+                                                </button>            -->
+                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <a href="CreateProduct.jsp">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                                <span class="sr-only">Agregar</span>
+                            </a>  
+                        </button>
+                    </div>
+
+                </div>
                 <div class="p-4 mx-auto max-w-screen-xl flex flex-wrap justify-center">
 
-                    
-                    
-                    
-                    <div class="max-w-sm bg-white m-4 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="w-full h-64 object-cover rounded-t-lg" src="https://th.bing.com/th/id/OIP.VfXeiUdWpQL_DKaoJ1EIbwHaHd?rs=1&pid=ImgDetMain" alt="" />
-                        </a>
-                        <div class="p-5">
-                            <p class="text-sm font-bold text-gray-500"><strong>#2</strong></p>
-                            <p class="text-sm font-bold text-gray-600"><strong>CD 244232</strong></p>
-                            <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Acetaminofen</h5>
-                            </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <p class="text-xl font-bold text-gray-800">Stock: 23</p>
-                                <p class="text-xl font-bold text-gray-800">$0.99</p>
-                            </div>
-                            <div class="flex justify-between mt-4">
-                                <a href="#" class="text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 py-2 px-4 transition duration-300">Editar</a>
-                                <a href="#" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition duration-300">Eliminar</a>
-                            </div>
-                        </div>
-                    </div>
+                    <%
+                        ProductController productController = new ProductController();
+                        List<Product> productsList = productController.getProductsController();
+                        // List<Product> productsList = (List) request.getSession().getAttribute("productsList");
+                        for (Product product : productsList) {
+                    %>
 
-                    <div class="max-w-sm bg-white m-4 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="w-full h-64 object-cover rounded-t-lg" src="https://th.bing.com/th/id/OIP.VfXeiUdWpQL_DKaoJ1EIbwHaHd?rs=1&pid=ImgDetMain" alt="" />
-                        </a>
-                        <div class="p-5">
-                            <p class="text-sm font-bold text-gray-500"><strong>#2</strong></p>
-                            <p class="text-sm font-bold text-gray-600"><strong>CD 244232</strong></p>
-                            <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Acetaminofen</h5>
-                            </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <p class="text-xl font-bold text-gray-800">Stock: 23</p>
-                                <p class="text-xl font-bold text-gray-800">$0.99</p>
-                            </div>
-                            <div class="flex justify-between mt-4">
-                                <a href="#" class="text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 py-2 px-4 transition duration-300">Editar</a>
-                                <a href="#" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition duration-300">Eliminar</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="max-w-sm w-full h-full bg-white m-4 border border-gray-200 rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 dark:bg-gray-800 dark:border-gray-700">
+                        <div class="p-5 flex flex-col justify-between h-full">
+                            <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1">ID: # <%= product.getId()%></p>
+                            <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">Código: <%= product.getCode()%></p>
 
-                    <div class="max-w-sm bg-white m-4 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="w-full h-64 object-cover rounded-t-lg" src="https://th.bing.com/th/id/OIP.VfXeiUdWpQL_DKaoJ1EIbwHaHd?rs=1&pid=ImgDetMain" alt="" />
-                        </a>
-                        <div class="p-5">
-                            <p class="text-sm font-bold text-gray-500"><strong>#2</strong></p>
-                            <p class="text-sm font-bold text-gray-600"><strong>CD 244232</strong></p>
-                            <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Acetaminofen</h5>
+                            <a href="#" class="block mb-4">
+                                <h5 class="text-2xl font-extrabold text-gray-900 dark:text-white transition duration-300 hover:text-blue-600 dark:hover:text-blue-400">
+                                    <%= product.getName()%>
+                                </h5>
                             </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <p class="text-xl font-bold text-gray-800">Stock: 23</p>
-                                <p class="text-xl font-bold text-gray-800">$0.99</p>
-                            </div>
-                            <div class="flex justify-between mt-4">
-                                <a href="#" class="text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 py-2 px-4 transition duration-300">Editar</a>
-                                <a href="#" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition duration-300">Eliminar</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="max-w-sm bg-white m-4 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        <a href="#">
-                            <img class="w-full h-64 object-cover rounded-t-lg" src="https://th.bing.com/th/id/OIP.VfXeiUdWpQL_DKaoJ1EIbwHaHd?rs=1&pid=ImgDetMain" alt="" />
-                        </a>
-                        <div class="p-5">
-                            <p class="text-sm font-bold text-gray-500"><strong>#2</strong></p>
-                            <p class="text-sm font-bold text-gray-600"><strong>CD 244232</strong></p>
-                            <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Acetaminofen</h5>
-                            </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                            <div class="flex justify-between items-center mt-4">
-                                <p class="text-xl font-bold text-gray-800">Stock: 23</p>
-                                <p class="text-xl font-bold text-gray-800">$0.99</p>
+                            <p class="flex-grow text-base font-light text-gray-700 dark:text-gray-400 mb-4">
+                                <%= product.getDescription()%>
+                            </p>
+
+                            <div class="flex justify-between items-center mb-4">
+                                <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                                    Stock: <%= product.getStock()%>
+                                </p>
+                                <p class="text-lg font-bold text-blue-600 dark:text-blue-400">
+                                    $<%= product.getPrice()%>
+                                </p>
                             </div>
-                            <div class="flex justify-between mt-4">
-                                <a href="#" class="text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 py-2 px-4 transition duration-300">Editar</a>
-                                <a href="#" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded transition duration-300">Eliminar</a>
+
+                            <div class="flex justify-between">
+                                <a href="#" class="text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 py-2 px-4 transition duration-300 shadow-md transform hover:scale-105">
+                                    Editar
+                                </a>
+                                <a href="#" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition duration-300 shadow-md transform hover:scale-105">
+                                    Eliminar
+                                </a>
                             </div>
                         </div>
                     </div>
 
 
+
+                    <%}%>
 
                 </div>
             </div>

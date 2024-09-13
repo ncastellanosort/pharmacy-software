@@ -5,6 +5,7 @@
 package com.mycompany.pr.farmacia.Persistence;
 
 import com.mycompany.pr.farmacia.Entities.Product;
+import java.util.List;
 
 /**
  *
@@ -16,6 +17,10 @@ public class PersistenceProductController {
 
     public void createProduct(Product product) {
         productJpaController.create(product);
+    }
+
+    public List<Product> getProducts() {
+        return productJpaController.findProductEntities();
     }
 
 }
