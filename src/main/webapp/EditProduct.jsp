@@ -185,7 +185,7 @@
                                     <textarea id="newDescription" name="newDescription" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="La descripcion acá"><%= productEdit.getDescription()%></textarea>
                                 </div>
                             </div>
-                            <button type="submit" class="inline-flex text-white bg-blue-700 hover:bg-blue-800 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                            <button type="submit" class="inline-flex text-white bg-green-600 hover:bg-green-700 font-medium items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                                 Editar producto
                             </button>
                         </form>
