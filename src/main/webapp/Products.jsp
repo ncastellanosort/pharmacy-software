@@ -161,7 +161,6 @@
                     <%
                         ProductController productController = new ProductController();
                         List<Product> productsList = productController.getProductsController();
-                        // List<Product> productsList = (List) request.getSession().getAttribute("productsList");
                         for (Product product : productsList) {
                     %>
 
@@ -193,7 +192,7 @@
                                 <a href="#" class="text-white rounded-lg bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 py-2 px-4 transition duration-300 shadow-md transform hover:scale-105">
                                     Editar
                                 </a>
-                                <a href="#" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition duration-300 shadow-md transform hover:scale-105">
+                                <a href="SvDeleteProduct?id=<%=product.getId()%>" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition duration-300 shadow-md transform hover:scale-105">
                                     Eliminar
                                 </a>
                             </div>

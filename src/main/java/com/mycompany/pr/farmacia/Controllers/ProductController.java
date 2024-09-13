@@ -6,6 +6,7 @@ package com.mycompany.pr.farmacia.Controllers;
 
 import com.mycompany.pr.farmacia.Entities.Product;
 import com.mycompany.pr.farmacia.Persistence.PersistenceProductController;
+import com.mycompany.pr.farmacia.Persistence.exceptions.NonexistentEntityException;
 import java.util.List;
 
 /**
@@ -13,14 +14,18 @@ import java.util.List;
  * @author Nicolas
  */
 public class ProductController {
-
+    
     PersistenceProductController persistenceProductController = new PersistenceProductController();
-
+    
     public void createProductController(Product product) {
         persistenceProductController.createProduct(product);
     }
-
+    
     public List<Product> getProductsController() {
         return persistenceProductController.getProducts();
+    }
+    
+    public void deleteProductController(int id) throws NonexistentEntityException {
+        persistenceProductController.deleteProduct(id);
     }
 }
