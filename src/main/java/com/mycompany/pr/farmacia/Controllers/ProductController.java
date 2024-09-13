@@ -14,18 +14,23 @@ import java.util.List;
  * @author Nicolas
  */
 public class ProductController {
-    
+
     PersistenceProductController persistenceProductController = new PersistenceProductController();
-    
+
     public void createProductController(Product product) {
         persistenceProductController.createProduct(product);
     }
-    
+
     public List<Product> getProductsController() {
         return persistenceProductController.getProducts();
     }
-    
+
     public void deleteProductController(int id) throws NonexistentEntityException {
         persistenceProductController.deleteProduct(id);
     }
+
+    public int getAmountOfProducts() {
+        return persistenceProductController.getAmountOfProducts();
+    }
+
 }

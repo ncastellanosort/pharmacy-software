@@ -23,9 +23,13 @@ public class PersistenceProductController {
     public List<Product> getProducts() {
         return productJpaController.findProductEntities();
     }
-    
-    public void deleteProduct(int id) throws NonexistentEntityException{
+
+    public void deleteProduct(int id) throws NonexistentEntityException {
         productJpaController.destroy(id);
+    }
+
+    public int getAmountOfProducts() {
+        return productJpaController.getProductCount();
     }
 
 }

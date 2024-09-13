@@ -72,6 +72,15 @@
                         </a>
                     </li>
                     <li>
+                        <a href="Products.jsp" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                            <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+                            <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+                            </svg>
+                            <span class="ms-3 ml-2 text-lg">Categorias</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
                             <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z"/>
@@ -128,8 +137,11 @@
         <section class="p-4 mt-14 sm:ml-64">
             <div class="bg-whitedark:bg-gray-900">
                 <div class="p-4 mx-auto max-w-screen-xl">
+                    <div class="flex flex-row justify-between items-center p-5 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
+
+                        <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Agregar un producto</h1>
+                    </div>
                     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-                        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Crea un nuevo producto</h2>
                         <form action="SvCreateProduct" method="POST">
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
@@ -152,10 +164,10 @@
                                     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoría</label>
                                     <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option selected="">Seleccionar categoría</option>
-                                        <option value="PA">Pastas</option>
-                                        <option value="AS">Aseo</option>
-                                        <option value="JA">Jarabes</option>
-                                        <option value="CR">Cremas</option>
+                                        <option value="Pastas">Pastas</option>
+                                        <option value="Aseo">Aseo</option>
+                                        <option value="Jarabes">Jarabes</option>
+                                        <option value="Cremas">Cremas</option>
                                     </select>
                                 </div>
                                 <div>

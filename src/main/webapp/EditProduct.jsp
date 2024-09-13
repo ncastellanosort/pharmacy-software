@@ -4,10 +4,6 @@
     Author     : Nicolas
 --%>
 
-<%@page import="com.mycompany.pr.farmacia.Controllers.ProductController"%>
-<%@page import="java.util.List"%>
-<%@page import="com.mycompany.pr.farmacia.Entities.Product"%>
-<%@page import="com.mycompany.pr.farmacia.Entities.Product"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,9 +14,8 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body>
-        <%
-            User userSession = (User) request.getSession().getAttribute("userSession");
-        %>
+        <% User userSession = (User) request.getSession().getAttribute("userSession");%>
+
         <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
                 <div class="flex items-center justify-between">
@@ -139,120 +134,64 @@
                 </ul>
             </div>
         </aside>
-
         <section class="p-4 mt-14 sm:ml-64">
             <div class="bg-whitedark:bg-gray-900">
+                <div class="p-4 mx-auto max-w-screen-xl">
+                    <div class="flex flex-row justify-between items-center p-5 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
 
-                <div class="flex flex-row justify-between items-center p-5 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
-
-                    <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Productos</h1>
-
-                    <div class="flex justify-end">
-                        <!--                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 4.5a6.5 6.5 0 1 1-4.55 11.05l-4.95 4.95a1 1 0 0 1-1.4-1.4l4.95-4.95A6.5 6.5 0 0 1 11 4.5z" />
-                                                    </svg>
-                                                    <span class="sr-only">Buscar</span>
-                                                </button>            -->
-                        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <a href="CreateProduct.jsp">
-                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                </svg>
-                                <span class="sr-only">Agregar</span>
-                            </a>  
-                        </button>
+                        <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Editar un producto</h1>
                     </div>
+                    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
 
-                </div>
-
-
-                <div class="flex flex-row p-4 mt-8">
-
-                    <form class="w-full max-w-md mx-auto flex flex-row items-center justify-between">
-                        <label for="countries" class="text-sm font-medium text-gray-900 dark:text-white mr-2">Ordenar por:</label>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Recomendados</option>
-                            <option value="name">Nombre</option>
-                            <option value="brand">Marca</option>
-                            <option value="price_asc">Precio Menor a Mayor</option>
-                            <option value="price_desc">Precio Mayor a Menor</option>
-                            <option value="stock_asc">Stock Menor a Mayor</option>
-                            <option value="stock_desc">Stock Mayor a Menor</option>
-                        </select>
-                    </form>
-
-
-                    <form class="w-full max-w-md mx-auto flex flex-row items-center justify-between">
-                        <label for="countries" class="text-sm font-medium text-gray-900 dark:text-white mr-2">Categoría:</label>
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected>Aleatorio</option>
-                            <option value="Pastas">Pastas</option>
-                            <option value="Jarabes">Jarabes</option>
-                            <option value="Aseo">Aseo</option>
-                            <option value="Cremas">Cremas</option>
-                        </select>
-                    </form>
-                </div>
-
-
-
-
-                <div class="p-4 mx-auto max-w-screen-xl flex flex-wrap justify-center">
-
-                    <%
-                        ProductController productController = new ProductController();
-                        List<Product> productsList = productController.getProductsController();
-                        for (Product product : productsList) {
-                    %>
-
-                    <div class="max-w-md w-full h-full bg-white m-4 border border-gray-200 rounded-lg overflow-hidden dark:bg-gray-800 dark:border-gray-700">
-                        <div class="p-5 flex flex-col justify-between h-full bg-gray-50">
-                            <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1">ID: # <%= product.getId()%></p>
-                            <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">Código: <%= product.getCode()%></p>
-
-                            <a href="#" class="bg-white text-gray-500 border border-gray-200 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-blue-400 mb-2 w-16 text-center">
-                                <p><%= product.getCategory()%></p>
-                            </a>
-
-                            <h5 class="text-2xl block mb-4 font-extrabold text-gray-900 dark:text-white">
-                                <%= product.getName()%>
-                            </h5>
-
-
-
-                            <p class="flex-grow text-gray-500 text-lg font-normal dark:text-gray-400 mb-4">
-                                <%= product.getDescription()%>
-                            </p>
-
-                            <div class="flex justify-between items-center mb-4">
-                                <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                                    Stock: <%= product.getStock()%>
-                                </p>
-                                <p class="text-lg font-bold text-gray-800">
-                                    $<%= product.getPrice()%>
-                                </p>
+                        <form action="SvCreateProduct" method="POST">
+                            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                                <div class="sm:col-span-2">
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Código</label>
+                                    <input type="text" name="newCode" id="newCode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Código del producto" required="">
+                                </div>
+                                <div class="sm:col-span-2">
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+                                    <input type="text" name="newName" id="newName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Escribe el nombre del producto" required="">
+                                </div>
+                                <div class="w-full">
+                                    <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Marca</label>
+                                    <input type="text" name="newBrand" id="newBrand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Marca del producto" required="">
+                                </div>
+                                <div class="w-full">
+                                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Precio</label>
+                                    <input type="text" name="newPrice" id="newPrice" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="0.99" required="">
+                                </div>
+                                <div>
+                                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoría</label>
+                                    <select id="newCategory" name="newCategory" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option selected="">Seleccionar categoría</option>
+                                        <option value="Pastas">Pastas</option>
+                                        <option value="Aseo">Aseo</option>
+                                        <option value="Jarabes">Jarabes</option>
+                                        <option value="Cremas">Cremas</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock</label>
+                                    <input type="number" name="newStock" id="newStock" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="199" required="">
+                                </div> 
+                                <div class="sm:col-span-2">
+                                    <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
+                                    <textarea id="newDescription" name="newDescription" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="La descripcion acá"></textarea>
+                                </div>
                             </div>
-
-                            <div class="flex justify-between">
-                                <a href="EditProduct.jsp" class="text-white rounded-lg bg-blue-600 hover:bg-blue-700 dark:focus:ring-blue-900 py-2 px-4 font-medium">
-                                    Editar
-                                </a>
-                                <a href="SvDeleteProduct?id=<%=product.getId()%>" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-medium">
-                                    Eliminar
-                                </a>
-                            </div>
-                        </div>
+                            <button type="submit" class="inline-flex text-white bg-blue-700 hover:bg-blue-800 items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+                                Editar producto
+                            </button>
+                        </form>
                     </div>
-
-
-
-                    <%}%>
 
                 </div>
             </div>
-        </section>
+        </div>
 
 
-    </body>
+    </section>
+
+</body>
 </html>
