@@ -22,10 +22,10 @@ To get started with the Pharmacy Project, follow these steps:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/pharmacy-project.git
+   git clone https://github.com/yourusername/pharmacy-software.git
 2. **Navigate to the Project Directory**:
    ```bash
-   cd pharmacy-project
+   cd pharmacy-software
 3. **Build the Project: Ensure you have Maven installed, then run**:
    ```bash
    mvn clean install
