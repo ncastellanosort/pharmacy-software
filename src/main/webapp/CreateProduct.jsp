@@ -4,7 +4,10 @@
     Author     : Nicolas
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.pr.farmacia.Controllers.CategoryController"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
+<%@page import="com.mycompany.pr.farmacia.Entities.Category"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -164,10 +167,14 @@
                                     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoría</label>
                                     <select id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option selected="">Seleccionar categoría</option>
-                                        <option value="Pastas">Pastas</option>
-                                        <option value="Aseo">Aseo</option>
-                                        <option value="Jarabes">Jarabes</option>
-                                        <option value="Cremas">Cremas</option>
+                                        <%
+                                            CategoryController categoryController = new CategoryController();
+                                            List<Category> categoriesList = categoryController.getCategoriesController();
+                                            for (Category category : categoriesList) {
+
+                                        %>
+                                        <option value="<%= category.getName()%>"><%= category.getName()%></option>
+                                        <%}%>
                                     </select>
                                 </div>
                                 <div>
