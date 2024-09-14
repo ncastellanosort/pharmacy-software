@@ -65,7 +65,6 @@ public class SvDeleteCategory extends HttpServlet {
             try {
                 categoryController.deleteCategoryController(id);
                 response.sendRedirect("Categories.jsp");
-                System.out.println("Categoría eliminada exitosamente.");
             } catch (NonexistentEntityException ex) {
                 Logger.getLogger(SvDeleteCategory.class.getName()).log(Level.SEVERE, null, ex);
             }
