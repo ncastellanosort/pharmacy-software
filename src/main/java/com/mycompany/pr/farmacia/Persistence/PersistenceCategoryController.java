@@ -5,6 +5,7 @@
 package com.mycompany.pr.farmacia.Persistence;
 
 import com.mycompany.pr.farmacia.Entities.Category;
+import com.mycompany.pr.farmacia.Persistence.exceptions.NonexistentEntityException;
 import java.util.List;
 
 /**
@@ -21,5 +22,9 @@ public class PersistenceCategoryController {
 
     public List<Category> getCategories() {
         return categoryJpaController.findCategoryEntities();
+    }
+
+    public void deleteCategory(int id) throws NonexistentEntityException {
+        categoryJpaController.destroy(id);
     }
 }

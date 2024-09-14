@@ -188,7 +188,7 @@
                                 Editar
                             </a>
 
-                            <a href="SvDeleteProduct?id=<%= category.getId()%>" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-medium">
+                            <a href="SvDeleteCategory?id=<%= category.getId()%>" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-medium">
                                 Eliminar
                             </a>                                
                         </div>
