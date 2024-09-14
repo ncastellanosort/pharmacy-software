@@ -47,19 +47,16 @@ public class SvDeleteCategory extends HttpServlet {
         Category category = categoryController.getCategoryController(id);
 
         boolean categoryInUse = false;
-
         int amountProductsWithCategory = 0;
 
         for (Product product : productsList) {
             if (product.getCategory().equals(category.getName())) {
                 categoryInUse = true;
                 amountProductsWithCategory++;
-                break;
             }
         }
 
         HttpSession httpSession = request.getSession();
-
         httpSession.setAttribute("amountProductsWithCategory", amountProductsWithCategory);
 
         if (categoryInUse) {
