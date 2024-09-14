@@ -24,8 +24,13 @@ public class CategoryController {
     public List<Category> getCategoriesController() {
         return persistenceCategoryController.getCategories();
     }
-    
-    public void deleteCategoryController(int id) throws NonexistentEntityException{
+
+    public void deleteCategoryController(int id) throws NonexistentEntityException {
         persistenceCategoryController.deleteCategory(id);
     }
+
+    public Category getCategoryController(int id) {
+        return persistenceCategoryController.getCategory(id);
+    }
+
 }

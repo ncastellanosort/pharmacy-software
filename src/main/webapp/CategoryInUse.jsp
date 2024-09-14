@@ -1,13 +1,9 @@
 <%-- 
-    Document   : Categories
-    Created on : Sep 14, 2024, 9:43:27 AM
+    Document   : CategoryInUse
+    Created on : Sep 14, 2024, 11:09:24 AM
     Author     : Nicolas
 --%>
 
-<%@page import="com.mycompany.pr.farmacia.Entities.Category"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.List"%>
-<%@page import="com.mycompany.pr.farmacia.Controllers.CategoryController"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -135,70 +131,28 @@
                             <span class="flex-1 ms-3 whitespace-nowrap ml-2 text-lg">Salir</span>
                         </a>
                     </li>
-
                 </ul>
             </div>
         </aside>
-        <section class="p-4 mt-14 sm:ml-64">
-            <div class="bg-whitedark:bg-gray-900">
 
-                <div class="flex flex-row justify-between items-center p-5 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
+        <%
+            int amountProductsWithCategory = (int) request.getSession().getAttribute("amountProductsWithCategory");
+        %>
 
-                    <h1 class="text-xl font-extrabold tracking-tight leading-none text-black md:text-5xl lg:text-6xl dark:text-white">Categorías</h1>
 
-                    <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <a href="CreateCategory.jsp">Agregar una nueva categoría</a>
-                        <svg class="me-1 -ms-1 w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                    </button>
-
+        <section class="p-4 mt-14 sm:ml-64 flex justify-center items-center">
+            <div class="max-w-screen-xl text-center">
+                <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">No se puede eliminar</h1>
+                <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">La categoría está en uso por <strong><%=amountProductsWithCategory%></strong> productos</p>
+                <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+                    <a href="Products.jsp" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                        Ver productos
+                        <svg class="w-3.5 h-3.5 ms-2 ml-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </a>
                 </div>
-
             </div>
-
-            <div class="flex flex-row p-4 mt-8">
-
-                <form class="w-full max-w-md mx-auto flex flex-row items-center justify-between">
-                    <label for="countries" class="text-sm font-medium text-gray-900 dark:text-white mr-2">Ordenar por:</label>
-                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected>ID</option>
-                        <option value="name">Nombre</option>
-                    </select>
-                </form>
-            </div>
-
-
-            <div class="p-4 mx-auto max-w-screen-xl flex flex-wrap justify-center">
-
-                <%
-                    CategoryController categoryController = new CategoryController();
-                    List<Category> categoriesList = categoryController.getCategoriesController();
-                    for (Category category : categoriesList) {
-                %>
-
-                <div class="max-w-md w-full h-full bg-white m-4 border border-gray-200 rounded-lg overflow-hidden dark:bg-gray-800 dark:border-gray-700">
-                    <div class="p-5 flex flex-col justify-between h-full bg-gray-50">
-                        <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1">ID: # <%= category.getId()%></p>
-
-                        <h5 class="text-2xl block mb-4 font-extrabold text-gray-900 dark:text-white">
-                            <%= category.getName()%>
-                        </h5>
-
-                        <div class="flex justify-end">
-                            <a href="SvDeleteCategory?id=<%= category.getId()%>" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-medium">
-                                Eliminar
-                            </a>                                
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <%}%>
-
-            </div>
-
-
-
         </section>
 
     </body>
