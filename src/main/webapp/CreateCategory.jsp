@@ -34,7 +34,8 @@
                     <div class="flex items-center">
                         <div class="flex items-center me-6">
                             <span class="text-sm mr-4 font-medium dark:text-gray-300">
-                                <%= new java.text.SimpleDateFormat("EEEE, dd MMMM yyyy").format(new java.util.Date())%>
+                                <%= new java.text.SimpleDateFormat("EEEE, dd MMMM yyyy", new java.util.Locale("es", "ES"))
+            .format(new java.util.Date())%>
                             </span>
                         </div>
                         <div class="flex items-center ms-3">
