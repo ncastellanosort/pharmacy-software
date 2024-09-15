@@ -23,7 +23,7 @@
         <%
             User userSession = (User) request.getSession().getAttribute("userSession");
         %>
-        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
@@ -115,7 +115,7 @@
                 </ul>
             </div>
         </aside>
-        <section class="p-4 sm:ml-64">
+        <section class="p-4 sm:ml-48">
             <div class="bg-whitedark:bg-gray-900 p-4">
 
                 <div class="flex flex-row justify-between items-center p-8 md:p-12 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
@@ -135,7 +135,7 @@
                     <form class="w-full max-w-md mx-auto flex flex-row items-center justify-between">
                         <label for="countries" class="text-base font-medium text-gray-900 dark:text-white mr-2">Ordenar por:</label>
                         <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option selected class="text-base font-normal">Recomendados</option>
+                            <option selected class="text-base font-normal">ID</option>
                             <option class="text-base font-normal" value="name">Nombre</option>
                             <option class="text-base font-normal" value="brand">Marca</option>
                             <option class="text-base font-normal" value="price_asc">Precio Menor a Mayor</option>
@@ -163,62 +163,91 @@
                 </div>
 
 
+                <div class="mx-auto mt-8 max-w-screen-xl flex flex-wrap justify-center">
+                    <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Código
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Categoría
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Marca
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Nombre
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Descripción
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Precio
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Stock
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Editar
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Eliminar
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
+                                <%
+                                    ProductController productController = new ProductController();
+                                    List<Product> productsList = productController.getProductsController();
+                                    for (Product product : productsList) {
+                                %>
 
-                <div class="p-4 mx-auto max-w-screen-xl flex flex-wrap justify-center">
+                                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <%= product.getId()%>
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        <%= product.getCode()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= product.getCategory()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= product.getBrand()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= product.getName()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= product.getDescription()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= product.getPrice()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= product.getStock()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href=href="SvGetProductEdit?id=<%= product.getId()%>" class="font-medium text-green-700 dark:text-green-700 hover:underline">Editar</a>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="SvDeleteProduct?id=<%=product.getId()%>" class="font-medium text-red-500 hover:text-red-500 hover:underline">Eliminar</a>
+                                    </td>
+                                </tr>
 
-                    <%
-                        ProductController productController = new ProductController();
-                        List<Product> productsList = productController.getProductsController();
-                        for (Product product : productsList) {
-                    %>
+                                <%}%>
 
-                    <div class="max-w-md w-full h-full bg-white m-4 border border-gray-200 rounded-lg overflow-hidden dark:bg-gray-800 dark:border-gray-700">
-                        <div class="p-8 md:p-12 flex flex-col justify-between h-full bg-gray-50">
-                            <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1">ID: # <%= product.getId()%></p>
-                            <p class="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3">Código: <%= product.getCode()%></p>
-
-                            <a href="#" class="bg-blue-100 text-blue-800 border w-1/4 text-center border-gray-200 text-xs font-medium px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-blue-400 mb-2 inline-block">
-                                <%= product.getCategory()%>
-                            </a>
-
-                            <h5 class="text-2xl block mb-4 font-extrabold text-gray-900 dark:text-white">
-                                <%= product.getName()%>
-                            </h5>
-
-                            <p class="flex-grow text-gray-500 text-lg font-normal dark:text-gray-400 mb-4">
-                                <%= product.getDescription()%>
-                            </p>
-
-                            <div class="flex justify-between items-center mb-4">
-                                <p class="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                                    Stock: <%= product.getStock()%>
-                                </p>
-                                <p class="text-lg font-bold text-gray-800">
-                                    $<%= product.getPrice()%>
-                                </p>
-                            </div>
-
-                            <div class="flex justify-between">
-                                <a href="SvGetProductEdit?id=<%= product.getId()%>" class="text-white text-base rounded-lg bg-green-600 hover:bg-green-700 dark:focus:ring-green-900 py-2 px-4 font-medium">
-                                    Editar
-                                </a>
-
-                                <a href="SvDeleteProduct?id=<%=product.getId()%>" class="text-center text-base bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-medium">
-                                    Eliminar
-                                </a>                                
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-
-
-
-                    <%}%>
-
                 </div>
             </div>
         </section>
-
-
     </body>
 </html>

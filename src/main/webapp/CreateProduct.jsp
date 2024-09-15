@@ -18,7 +18,7 @@
     </head>
     <body>
         <% User userSession = (User) request.getSession().getAttribute("userSession");%>
-        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
@@ -110,7 +110,7 @@
                 </ul>
             </div>
         </aside>
-        <section class="p-4 sm:ml-64">
+        <section class="p-4 sm:ml-48">
             <div class="bg-whitedark:bg-gray-900">
                 <div class="p-4 mx-auto max-w-screen-xl">
                     <div class="flex flex-row justify-between items-center p-8 md:p-12 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">

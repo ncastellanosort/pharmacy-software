@@ -17,7 +17,7 @@
         <%
             User userSession = (User) request.getSession().getAttribute("userSession");
         %>
-        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
@@ -115,7 +115,7 @@
         %>
 
 
-        <section class="p-4 sm:ml-64 flex justify-center items-center">
+        <section class="p-4 sm:ml-48 flex justify-center items-center">
             <div class="max-w-screen-xl text-center">
                 <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">No se puede eliminar</h1>
                 <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">La categoría está en uso por <strong><%=amountProductsWithCategory%></strong> productos</p>

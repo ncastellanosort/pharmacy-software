@@ -21,7 +21,7 @@
         <%
             User userSession = (User) request.getSession().getAttribute("userSession");
         %>
-        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
                     <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
@@ -113,7 +113,7 @@
                 </ul>
             </div>
         </aside>
-        <section class="p-4 sm:ml-64">
+        <section class="p-4 sm:ml-48">
             <div class="bg-whitedark:bg-gray-900 p-4">
 
                 <div class="flex flex-row justify-between items-center p-8 md:p-12 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
@@ -140,40 +140,47 @@
                 </form>
             </div>
 
+            <div class="mx-auto mt-8 max-w-screen-xl flex flex-wrap justify-center">
+                <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    ID
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Nombre
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Eliminar
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-            <div class="p-4 mx-auto max-w-screen-xl flex flex-wrap justify-center">
+                            <%
+                                CategoryController categoryController = new CategoryController();
+                                List<Category> categoriesList = categoryController.getCategoriesController();
+                                for (Category category : categoriesList) {
+                            %>
 
-                <%
-                    CategoryController categoryController = new CategoryController();
-                    List<Category> categoriesList = categoryController.getCategoriesController();
-                    for (Category category : categoriesList) {
-                %>
+                            <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <%= category.getId()%>
+                                </th>
+                                <td class="px-6 py-4">
+                                    <%= category.getName()%>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="SvDeleteCategory?id=<%= category.getId()%>" class="font-medium text-red-500 hover:text-red-500 hover:underline">Eliminar</a>
+                                </td>
+                            </tr>
 
-                <div class="max-w-md w-full h-full bg-white m-4 border border-gray-200 rounded-lg overflow-hidden dark:bg-gray-800 dark:border-gray-700">
-                    <div class="p-5 flex flex-col p-8 md:p-12 justify-between h-full bg-gray-50">
-                        <p class="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-1">ID: # <%= category.getId()%></p>
-
-                        <h5 class="text-2xl block mb-4 font-extrabold text-gray-900 dark:text-white">
-                            <%= category.getName()%>
-                        </h5>
-
-                        <div class="flex justify-end">
-                            <a href="SvDeleteCategory?id=<%= category.getId()%>" class="text-center bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg font-medium">
-                                Eliminar
-                            </a>                                
-                        </div>
-                    </div>
+                            <%}%>
+                            </div>
+                        </tbody>
+                    </table>
                 </div>
-
-
-
-                <%}%>
-
-            </div>
-
-
-
         </section>
-
     </body>
 </html>
