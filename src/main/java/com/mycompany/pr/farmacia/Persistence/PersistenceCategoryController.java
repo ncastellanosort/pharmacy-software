@@ -13,22 +13,26 @@ import java.util.List;
  * @author Nicolas
  */
 public class PersistenceCategoryController {
-    
+
     CategoryJpaController categoryJpaController = new CategoryJpaController();
-    
+
     public void createCategory(Category category) {
         categoryJpaController.create(category);
     }
-    
+
     public List<Category> getCategories() {
         return categoryJpaController.findCategoryEntities();
     }
-    
+
     public void deleteCategory(int id) throws NonexistentEntityException {
         categoryJpaController.destroy(id);
     }
-    
+
     public Category getCategory(int id) {
         return categoryJpaController.findCategory(id);
+    }
+
+    public int getAmountOfCategories() {
+        return categoryJpaController.getCategoryCount();
     }
 }

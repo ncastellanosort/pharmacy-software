@@ -33,4 +33,8 @@ public class CategoryController {
         return persistenceCategoryController.getCategory(id);
     }
 
+    public int getAmountOfCategoriesController() {
+        return persistenceCategoryController.getAmountOfCategories();
+    }
+
 }

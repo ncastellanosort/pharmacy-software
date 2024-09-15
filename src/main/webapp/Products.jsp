@@ -22,6 +22,7 @@
     <body>
         <%
             User userSession = (User) request.getSession().getAttribute("userSession");
+            ProductController productController = new ProductController();
         %>
         <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
@@ -162,10 +163,12 @@
                     </form>
                 </div>
 
-
                 <div class="mx-auto mt-8 max-w-screen-xl flex flex-wrap justify-center">
                     <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                Cantidad total de productos: <%= productController.getAmountOfProductsController()%>                             
+                            </caption>
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
@@ -203,7 +206,6 @@
                             <tbody>
 
                                 <%
-                                    ProductController productController = new ProductController();
                                     List<Product> productsList = productController.getProductsController();
                                     for (Product product : productsList) {
                                 %>
