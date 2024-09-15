@@ -4,7 +4,7 @@
 
 Welcome to the Pharmacy Project! This is a web application developed using Java, JSP (JavaServer Pages), and Servlets. The project aims to streamline pharmacy operations by providing an intuitive and user-friendly interface for managing pharmacy data.
 
-![Login page](https://github.com/user-attachments/assets/a3ac42c4-1a02-451a-830e-f1a75c7346e4)
+![Index page](https://github.com/user-attachments/assets/a8b18438-aa10-4da7-8990-60f1c6719022)
 
 ## Technologies Used 🚀
 
