@@ -118,20 +118,7 @@
         </aside>
         <section class="p-4 sm:ml-48">
             <div class="bg-whitedark:bg-gray-900 p-4">
-
-                <div class="flex flex-row justify-between items-center p-8 md:p-12 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
-
-                    <h1 class="text-3xl text-gray-900 md:text-5xl font-extrabold tracking-tight leading-none text-black dark:text-white">Productos</h1>
-
-                    <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <a href="CreateProduct.jsp" class="text-base">Agregar un nuevo producto</a>
-                        <svg class="me-1 -ms-1 w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                    </button>
-
-                </div>
-
-
-                <div class="flex flex-row p-4 mt-8">
+                <div class="flex flex-row p-4">
 
                     <form class="w-full max-w-md mx-auto flex flex-row items-center justify-between">
                         <label for="countries" class="text-base font-medium text-gray-900 dark:text-white mr-2">Ordenar por:</label>
@@ -166,10 +153,16 @@
                 <div class="mx-auto mt-8 max-w-screen-xl flex flex-wrap justify-center">
                     <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <caption class="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-                                Cantidad total de productos: <%= productController.getAmountOfProductsController()%>                             
+                            <caption class="p-5 bg-gray-50 font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                <div class="flex flex-row items-center justify-between">
+                                    <p class="text-gray-900 text-5xl font-extrabold">Productos</p>
+                                    <p class="text-blue-700 text-base">Inventario actual: <%= productController.getAmountOfProductsController()%> productos</p>
+                                    <button type="submit" class="text-white inline-flex items-center bg-blue-700 text-base hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                        <a href="CreateProduct.jsp" class="text-base"><svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg></a>
+                                    </button>
+                                </div>
                             </caption>
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
                                         ID
