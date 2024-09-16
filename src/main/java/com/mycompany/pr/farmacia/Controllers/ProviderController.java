@@ -14,23 +14,31 @@ import java.util.List;
  * @author Nicolas
  */
 public class ProviderController {
-
+    
     PersistenceProviderController persistenceProviderController = new PersistenceProviderController();
-
+    
     public List<Provider> getProvidersController() {
         return persistenceProviderController.getProviders();
     }
-
+    
     public int getAmountProvidersController() {
         return persistenceProviderController.getAmountProviders();
     }
     
-    public void registerProviderController(Provider provider){
+    public void registerProviderController(Provider provider) {
         persistenceProviderController.registerProvider(provider);
     }
     
-    public void deleleProviderController(int id) throws NonexistentEntityException{
+    public void deleleProviderController(int id) throws NonexistentEntityException {
         persistenceProviderController.deleteProvider(id);
+    }
+    
+    public void editProviderController(Provider provider) throws Exception {
+        persistenceProviderController.editProvider(provider);
+    }
+    
+    public Provider getProviderController(int id) {
+        return persistenceProviderController.getProvider(id);
     }
     
 }
