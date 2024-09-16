@@ -1,6 +1,4 @@
-<%@page import="com.mycompany.pr.farmacia.Controllers.CategoryController"%>
-<%@page import="com.mycompany.pr.farmacia.Controllers.ProductController"%>
-<%@page import="com.mycompany.pr.farmacia.Controllers.UserController"%>
+<%@page import="com.mycompany.pr.farmacia.Controllers.Controller"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -10,9 +8,7 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <%
-        UserController userController = new UserController();
-        ProductController productController = new ProductController();
-        CategoryController categoryController = new CategoryController();
+        Controller controller = new Controller();
     %>
     <body class="flex flex-col min-h-screen bg-gray-100">
         <div class="flex-grow flex items-center justify-center">

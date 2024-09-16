@@ -1,20 +1,24 @@
 <%-- 
-    Document   : CreateCategory
-    Created on : Sep 14, 2024, 9:47:58 AM
+    Document   : CreateProvider
+    Created on : Sep 15, 2024, 8:48:36 PM
     Author     : Nicolas
 --%>
 
+<%@page import="com.mycompany.pr.farmacia.Controllers.ProviderController"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Categorías</title>
+        <title>Proveedor</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body>
-        <% User userSession = (User) request.getSession().getAttribute("userSession");%>
+        <%
+            User userSession = (User) request.getSession().getAttribute("userSession");
+            ProviderController providerController = new ProviderController();
+        %>
         <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
@@ -107,24 +111,39 @@
                 </ul>
             </div>
         </aside>
-
         <section class="p-4 sm:ml-48">
             <div class="bg-whitedark:bg-gray-900">
                 <div class="p-4 mx-auto max-w-screen-xl">
                     <div class="flex flex-row justify-between items-center p-8 md:p-12 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
 
-                        <h1 class="text-3xl text-gray-900 md:text-5xl font-extrabold tracking-tight leading-none text-black dark:text-white">Agregar una categoría</h1>
+                        <h1 class="text-3xl text-gray-900 md:text-5xl font-extrabold tracking-tight leading-none text-black dark:text-white">Registrar un nuevo proveedor</h1>
                     </div>
                     <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-                        <form action="SvCreateCategory" method="POST">
+                        <form action="SvCreateProvider" method="POST">
                             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div class="sm:col-span-2">
                                     <label for="name" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Nombre</label>
-                                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nombre de la categoría" required="">
+                                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nombre del proveedor" required="">
                                 </div>
+                                <div class="sm:col-span-2">
+                                    <label for="contactName" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Nombre de contacto</label>
+                                    <input type="text" name="contactName" id="contactName" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nombre del represtentante del proveedor" required="">
+                                </div>
+                                <div class="w-full">
+                                    <label for="phone" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Teléfono</label>
+                                    <input type="text" name="phone" id="phone" type="tel" inputmode="numeric" pattern="[0-9]+" title="Por favor ingrese solo números" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="3116478976" required="">
+                                </div>
+                                <div class="w-full">
+                                    <label for="email" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Email</label>
+                                    <input type="email" title="Por favor ingrese un correo válido" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="name@company.com" required="">
+                                </div>
+                                <div>
+                                    <label for="address" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Dirección</label>
+                                    <input type="text" name="address" id="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Carrera 3b #12-15, Bogota COL" required="">
+                                </div> 
                             </div>
                             <button type="submit" class="inline-flex text-base text-white bg-blue-700 hover:bg-blue-800 items-center px-5 py-2.5 mt-4 sm:mt-6 text-base font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                Crear categoría
+                                Registrar
                             </button>
                         </form>
                     </div>

@@ -6,6 +6,7 @@
     <class>com.mycompany.pr.farmacia.Entities.User</class>
     <class>com.mycompany.pr.farmacia.Entities.Product</class>
     <class>com.mycompany.pr.farmacia.Entities.Category</class>
+    <class>com.mycompany.pr.farmacia.Entities.Provider</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pharmacy?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

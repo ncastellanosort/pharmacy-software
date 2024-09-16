@@ -24,6 +24,7 @@ public class Product implements Serializable {
 
     @Basic
     private String code;
+    private String provider;
     private String name;
     private String brand;
     private String description;
@@ -34,9 +35,10 @@ public class Product implements Serializable {
     public Product() {
     }
 
-    public Product(int id, String code, String name, String brand, String description, String category, int stock, double price) {
+    public Product(int id, String code, String provider, String name, String brand, String description, String category, int stock, double price) {
         this.id = id;
         this.code = code;
+        this.provider = provider;
         this.name = name;
         this.brand = brand;
         this.description = description;
@@ -45,8 +47,9 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public Product(String code, String name, String brand, String description, String category, int stock, double price) {
+    public Product(String code, String provider, String name, String brand, String description, String category, int stock, double price) {
         this.code = code;
+        this.provider = provider;
         this.name = name;
         this.brand = brand;
         this.description = description;
@@ -65,6 +68,14 @@ public class Product implements Serializable {
 
     public String getCode() {
         return code;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
     public void setCode(String code) {

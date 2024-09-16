@@ -1,20 +1,26 @@
 <%-- 
-    Document   : CreateCategory
-    Created on : Sep 14, 2024, 9:47:58 AM
+    Document   : Providers
+    Created on : Sep 15, 2024, 8:33:41 PM
     Author     : Nicolas
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.pr.farmacia.Entities.Provider"%>
+<%@page import="com.mycompany.pr.farmacia.Controllers.ProviderController"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Categorías</title>
+        <title>Proveedores</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body>
-        <% User userSession = (User) request.getSession().getAttribute("userSession");%>
+        <%
+            User userSession = (User) request.getSession().getAttribute("userSession");
+            ProviderController providerController = new ProviderController();
+        %>
         <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-48 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
             <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
                 <a href="https://flowbite.com/" class="flex items-center ps-2.5 mb-5">
@@ -107,34 +113,106 @@
                 </ul>
             </div>
         </aside>
-
         <section class="p-4 sm:ml-48">
-            <div class="bg-whitedark:bg-gray-900">
-                <div class="p-4 mx-auto max-w-screen-xl">
-                    <div class="flex flex-row justify-between items-center p-8 md:p-12 bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
+            <div class="bg-whitedark:bg-gray-900 p-4">
+                <div class="flex flex-row p-4">
 
-                        <h1 class="text-3xl text-gray-900 md:text-5xl font-extrabold tracking-tight leading-none text-black dark:text-white">Agregar una categoría</h1>
-                    </div>
-                    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-                        <form action="SvCreateCategory" method="POST">
-                            <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                                <div class="sm:col-span-2">
-                                    <label for="name" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Nombre</label>
-                                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nombre de la categoría" required="">
-                                </div>
-                            </div>
-                            <button type="submit" class="inline-flex text-base text-white bg-blue-700 hover:bg-blue-800 items-center px-5 py-2.5 mt-4 sm:mt-6 text-base font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                                Crear categoría
-                            </button>
-                        </form>
-                    </div>
+                    <form class="w-full max-w-md mx-auto flex flex-row items-center justify-between">
+                        <label for="countries" class="text-base font-medium text-gray-900 dark:text-white mr-2">Ordenar por:</label>
+                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected class="text-base font-normal">ID</option>
+                            <option class="text-base font-normal" value="name">Nombre</option>
+                            <option class="text-base font-normal" value="brand">Marca</option>
+                            <option class="text-base font-normal" value="price_asc">Precio Menor a Mayor</option>
+                            <option class="text-base font-normal" value="price_desc">Precio Mayor a Menor</option>
+                            <option class="text-base font-normal" value="stock_asc">Stock Menor a Mayor</option>
+                            <option class="text-base font-normal" value="stock_desc">Stock Mayor a Menor</option>
+                        </select>
+                    </form>
 
                 </div>
+
+                <div class="mx-auto mt-8 max-w-screen-xl flex flex-wrap justify-center">
+                    <div class="relative overflow-x-auto sm:rounded-lg border border-gray-200">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <caption class="p-5 bg-gray-50 font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                                <div class="flex flex-row items-center justify-between">
+                                    <p class="text-gray-900 text-5xl font-extrabold">Provedores</p>
+                                    <p class="text-blue-700 text-base"><%= providerController.getAmountProvidersController()%> proveedores</p>
+                                    <button type="submit" class="text-white inline-flex items-center bg-blue-700 text-base hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                        <a href="CreateProvider.jsp" class="text-base"><svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg></a>
+                                    </button>
+                                </div>
+                            </caption>
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        ID
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Nombre
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Nombre de contacto
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Teléfono
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Email
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Dirección
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Editar
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Eliminar
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <%
+                                    List<Provider> providerList = providerController.getProvidersController();
+                                    for (Provider provider : providerList) {
+                                %>
+
+                                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <%= provider.getId()%>
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        <%= provider.getName()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= provider.getContactName()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= provider.getPhone()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= provider.getEmail()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <%= provider.getAddress()%>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href=href="SvGetProductEdit?id=" class="font-medium text-green-700 dark:text-green-700 hover:underline">Editar</a>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="SvDeleteProvider?id=<%= provider.getId()%>" class="font-medium text-red-500 hover:text-red-500 hover:underline">Eliminar</a>
+                                    </td>
+                                </tr>
+
+                                <%}%>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-
-
-    </section>
-
-</body>
+        </section>
+    </body>
 </html>

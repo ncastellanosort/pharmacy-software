@@ -4,9 +4,12 @@
  */
 package com.mycompany.pr.farmacia.Servlets;
 
-import com.mycompany.pr.farmacia.Controllers.ProductController;
-import com.mycompany.pr.farmacia.Entities.Product;
+import com.mycompany.pr.farmacia.Controllers.ProviderController;
+import com.mycompany.pr.farmacia.Persistence.exceptions.NonexistentEntityException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,10 +20,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nicolas
  */
-@WebServlet(name = "SvCreateProduct", urlPatterns = {"/SvCreateProduct"})
-public class SvCreateProduct extends HttpServlet {
+@WebServlet(name = "SvDeleteProvider", urlPatterns = {"/SvDeleteProvider"})
+public class SvDeleteProvider extends HttpServlet {
 
-    ProductController productController = new ProductController();
+    ProviderController providerController = new ProviderController();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,27 +34,23 @@ public class SvCreateProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        try {
+            providerController.deleleProviderController(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(SvDeleteProvider.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        response.sendRedirect("Providers.jsp");
+
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String code = request.getParameter("code");
-        String provider = request.getParameter("prodiver");
-        String name = request.getParameter("name");
-        String brand = request.getParameter("brand");
-        String description = request.getParameter("description");
-        String category = request.getParameter("category");
-        int stock = Integer.parseInt(request.getParameter("stock"));
-        double price = Double.parseDouble(request.getParameter("price"));
-
-        productController.createProductController(new Product(code, provider, name, brand, description, category, stock, price
-        ));
-
-        response.sendRedirect("Products.jsp");
-
         processRequest(request, response);
     }
 

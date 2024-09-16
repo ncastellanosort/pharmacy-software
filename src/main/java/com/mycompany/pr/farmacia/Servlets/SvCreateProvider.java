@@ -4,9 +4,10 @@
  */
 package com.mycompany.pr.farmacia.Servlets;
 
-import com.mycompany.pr.farmacia.Controllers.ProductController;
-import com.mycompany.pr.farmacia.Entities.Product;
+import com.mycompany.pr.farmacia.Controllers.ProviderController;
+import com.mycompany.pr.farmacia.Entities.Provider;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,15 +18,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Nicolas
  */
-@WebServlet(name = "SvCreateProduct", urlPatterns = {"/SvCreateProduct"})
-public class SvCreateProduct extends HttpServlet {
+@WebServlet(name = "SvCreateProvider", urlPatterns = {"/SvCreateProvider"})
+public class SvCreateProvider extends HttpServlet {
 
-    ProductController productController = new ProductController();
+    ProviderController providerController = new ProviderController();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
     }
 
     @Override
@@ -38,19 +38,15 @@ public class SvCreateProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String code = request.getParameter("code");
-        String provider = request.getParameter("prodiver");
         String name = request.getParameter("name");
-        String brand = request.getParameter("brand");
-        String description = request.getParameter("description");
-        String category = request.getParameter("category");
-        int stock = Integer.parseInt(request.getParameter("stock"));
-        double price = Double.parseDouble(request.getParameter("price"));
+        String contactName = request.getParameter("contactName");
+        String phone = request.getParameter("phone");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
 
-        productController.createProductController(new Product(code, provider, name, brand, description, category, stock, price
-        ));
+        providerController.registerProviderController(new Provider(name, contactName, phone, email, address));
 
-        response.sendRedirect("Products.jsp");
+        response.sendRedirect("Providers.jsp");
 
         processRequest(request, response);
     }
