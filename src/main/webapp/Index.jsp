@@ -4,6 +4,7 @@
     Author     : Nicolas
 --%>
 
+<%@page import="com.mycompany.pr.farmacia.Controllers.ProviderController"%>
 <%@page import="com.mycompany.pr.farmacia.Controllers.ProductController"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page import="com.mycompany.pr.farmacia.Persistence.UserJpaController"%>
@@ -145,9 +146,13 @@
                             <a href="#" class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
                                 <p>Proveedores</p>
 
+                                <%
+                                    ProviderController providerController = new ProviderController();
+                                %>
+
                             </a>
                             <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">Cantidad de proveedores activos</h2>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400 mb-4">Actualmente, cuentas con un total de <strong>29</strong> proveedores registrados en el sistema.</p>
+                            <p class="text-base font-normal text-gray-500 dark:text-gray-400 mb-4">Actualmente, cuentas con un total de <strong><%= providerController.getAmountProvidersController()%></strong> proveedores registrados en el sistema.</p>
                             <a href="#" class="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                                 <p class="mr-2">Ver proveedores</p>
 
