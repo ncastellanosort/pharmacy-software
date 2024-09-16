@@ -39,7 +39,7 @@ public class SvCreateProduct extends HttpServlet {
             throws ServletException, IOException {
 
         String code = request.getParameter("code");
-        String provider = request.getParameter("prodiver");
+        String provider = request.getParameter("provider");
         String name = request.getParameter("name");
         String brand = request.getParameter("brand");
         String description = request.getParameter("description");

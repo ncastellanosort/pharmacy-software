@@ -171,6 +171,9 @@
                                         Código
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Proveedor
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Categoría
                                     </th>
                                     <th scope="col" class="px-6 py-3">
@@ -211,6 +214,9 @@
                                         <%= product.getCode()%>
                                     </td>
                                     <td class="px-6 py-4">
+                                        <%= product.getProvider()%>
+                                    </td>
+                                    <td class="px-6 py-4">
                                         <%= product.getCategory()%>
                                     </td>
                                     <td class="px-6 py-4">
@@ -229,7 +235,7 @@
                                         <%= product.getStock()%>
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href=href="SvGetProductEdit?id=<%= product.getId()%>" class="font-medium text-green-700 dark:text-green-700 hover:underline">Editar</a>
+                                        <a href="SvGetProductEdit?id=<%= product.getId()%>" class="font-medium text-green-700 dark:text-green-700 hover:underline">Editar</a>
                                     </td>
                                     <td class="px-6 py-4">
                                         <a href="SvDeleteProduct?id=<%=product.getId()%>" class="font-medium text-red-500 hover:text-red-500 hover:underline">Eliminar</a>

@@ -4,6 +4,8 @@
     Author     : Nicolas
 --%>
 
+<%@page import="com.mycompany.pr.farmacia.Entities.Provider"%>
+<%@page import="com.mycompany.pr.farmacia.Controllers.ProviderController"%>
 <%@page import="java.util.List"%>
 <%@page import="com.mycompany.pr.farmacia.Controllers.CategoryController"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
@@ -147,6 +149,20 @@
 
                                         %>
                                         <option class="text-base" value="<%= category.getName()%>"><%= category.getName()%></option>
+                                        <%}%>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="provider" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Proveedor</label>
+                                    <select id="provider" name="provider" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option selected="" class="text-base">Seleccionar proveedor</option>
+                                        <%
+                                            ProviderController providerController = new ProviderController();
+                                            List<Provider> providersList = providerController.getProvidersController();
+                                            for (Provider provider : providersList) {
+
+                                        %>
+                                        <option class="text-base" value="<%= provider.getName()%>"><%= provider.getName()%></option>
                                         <%}%>
                                     </select>
                                 </div>

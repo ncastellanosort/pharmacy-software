@@ -4,6 +4,12 @@
     Author     : Nicolas
 --%>
 
+<%@page import="com.mycompany.pr.farmacia.Entities.Category"%>
+<%@page import="com.mycompany.pr.farmacia.Controllers.CategoryController"%>
+<%@page import="java.util.List"%>
+<%@page import="com.mycompany.pr.farmacia.Entities.Provider"%>
+<%@page import="com.mycompany.pr.farmacia.Entities.Provider"%>
+<%@page import="com.mycompany.pr.farmacia.Controllers.ProviderController"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.Product"%>
 <%@page import="com.mycompany.pr.farmacia.Entities.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -140,13 +146,31 @@
                                     <input type="text" name="newPrice" id="newPrice" value="<%= productEdit.getPrice()%>" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="0.99" required="">
                                 </div>
                                 <div>
-                                    <label for="category" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Categoría</label>
+                                    <label for="newCategory" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Categoría</label>
                                     <select id="newCategory" name="newCategory" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option class="text-base" selected=""><%= productEdit.getCategory()%></option>
-                                        <option value="Pastas" class="text-base">Pastas</option>
-                                        <option value="Aseo" class="text-base">Aseo</option>
-                                        <option value="Jarabes" class="text-base">Jarabes</option>
-                                        <option value="Cremas" class="text-base">Cremas</option>
+                                        <%
+                                            CategoryController categoryController = new CategoryController();
+                                            List<Category> categoriesList = categoryController.getCategoriesController();
+                                            for (Category category : categoriesList) {
+
+                                        %>
+                                        <option class="text-base" value="<%= category.getName()%>"><%= category.getName()%></option>
+                                        <%}%>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="newProvider" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Proveedor</label>
+                                    <select id="newProvider" name="newProvider" class="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                        <option selected="" class="text-base"><%= productEdit.getProvider()%></option>
+                                        <%
+                                            ProviderController providerController = new ProviderController();
+                                            List<Provider> providersList = providerController.getProvidersController();
+                                            for (Provider provider : providersList) {
+
+                                        %>
+                                        <option class="text-base" value="<%= provider.getName()%>"><%= provider.getName()%></option>
+                                        <%}%>
                                     </select>
                                 </div>
                                 <div>
